@@ -1,6 +1,38 @@
-<h1>Sessions#welcome</h1>
-<p>Find me in app/views/sessions/welcome.html.erb</p>
+<h1>Welcome</h1>
 
+<%= button_to "Sign In", '/login', method: :get%>
 
-<h1>Welcome</h1><% if logged_in? %>    <h1>You are Logged In, <%= current_user.username %></h1><%end%><%= button_to "Login", '/login', method: :get%><%= button_to "Sign Up", '/users/new', method: :get%>
+<%= button_to "SignUp", '/users/new', method: :get%>
 
+<%if logged_in?%>
+  <h1>You are Logged In, <%= current_user.email %></h1>
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Country</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th>First name</th>
+      <th>Last name</th>
+    </tr>
+  </thead>
+
+ <tbody>
+   <% @users.each do |user| %>
+     <tr>
+      <td><%= user.email %></td>
+      <td><%= user.age %></td>
+      <td><%= user.gender %></td>
+      <td><%= user.country %></td>
+      <td><%= user.created_at %></td>
+      <td><%= user.updated_at %></td>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+    </tr>
+   <% end %>
+ </tbody>
+<%= will_paginate @users %>
+<%end%>

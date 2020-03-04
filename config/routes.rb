@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/login'
-  get 'sessions/welcome'
-  get 'users/new'
-  get 'users/create'
+  # resources :sessions, only: [:new, :create, :login, :welcome]
+  resources :users, only: [:new, :create]
   get 'login', to: 'sessions#new'
   get 'welcome', to: 'sessions#welcome'
   post 'login', to: 'sessions#create'

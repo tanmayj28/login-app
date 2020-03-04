@@ -1,4 +1,25 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Sign Up</h1>
 
-<h1>Sign Up</h1><%= form_for @user do |f|%>  <%= f.label :username%><br>  <%= f.text_field :username%><br>  <%= f.label :password%><br>  <%= f.password_field :password%><br>  <%= f.submit %><%end%>
+<%= simple_form_for @user do |f|%>
+    <%= f.label :first_name%><br>
+    <%= f.text_field :first_name%><br>
+    
+    <%= f.label :last_name%><br>
+    <%= f.text_field :last_name%><br>
+
+    <%= f.label :age%><br>
+    <%= f.number_field :age%><br>
+
+    <br><%= f.input :gender, collection: User.genders.keys %><br>
+
+    <%= f.label :country%><br>
+    <%= f.text_field :country%><br>
+
+    <%= f.label :email%><br>
+    <%= f.text_field :email%><br>
+
+    <%= f.label :password%><br>
+    <%= f.password_field :password%><br>
+
+    <%= f.submit %>
+<%end%>
